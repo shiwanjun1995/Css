@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+            float: left;
+            background-color: pink;
+            margin-right: 10px;
+        }
+        /* 清除浮动 */
+        /* :::after选择器向选定的元素后面插入内容 */
+        .clearfix::after {
+            /* 生成内容为空 */
+            content: ''; 
+            /* 生成的元素以块元素展示 */
+            display: block;
+            /* 清除前面元素浮动带来的影响 */
+            clear: both;
+        }
+
+        .clear::after, 
+        .clear::before {
+            content: '';
+            display: table;
+        }
+        .clear::after {
+            clear: both;
+        }
+
+        .top {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 30px;
+            overflow: hidden;
+        }
+
+        .bottom {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 20px;
+        }
+
+        /*
+        满足下面任一条件即可
+        浮动元素和绝对定位元素，非块级盒子的块级容器（例如 inline-blocks, table-cells, 和 table-captions），以及overflow值不为“visiable”的块级盒子，都会为他们的内容创建新的块级格式化上下文(block formatting context)。
+
+        1.根元素(整个页面就是一个大的BFC)；
+
+        2.float为 left | right；
+
+        3.overflow为 hidden | auto | scroll；
+
+        4.display为 inline-block | table-cell | table-caption | flex | inline-flex；
+
+        5.position为 absolute | fixed；
+
+        BFC内部，盒子由上至下按顺序进行排列，其间隙由盒子的外边距决定，并且，当同一个BFC中的两个盒子同时具有相对方向的外边距时，其外边距还会发生叠加(Margin Collapse)
+        BFC内部，无论是浮动盒子还是普通盒子，其左总是与包含块的左边相接触
+        BFC 区域不会与float box区域相叠加 左右排版
+        BFC内外布局不会相互影响
+        计算BFC高度的时候，浮动元素的高度也计算在内
+
+        display: table 前后带有换行符，我们一般也不常用
+        overflow: scroll 可能会出现不想要的滚动条，丑
+        float: left 万一我们不想让元素浮动呢？
+        overflow: hidden 比较完美的创建BFC的方案，副作用较小，仿佛遇到了我的心动女生
+
+        bfc的三个特性：
+        a.阻止外边距折叠
+        b.可以包含浮动的元素
+        c.可以阻止元素被浮动元素覆盖 */
+
+
+        .wrapper {
+            overflow: hidden;
+        }   
+
+        /* 具体发生margin塌陷的原因个人理解是由于margin值需要根据参照点来实现偏移的，当没有参照点是就出现了无法偏移的情况，所以需要手动给父元素设置一个点出来做子元素的偏移参照物 */
+        .floated {
+            float: left;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .over {
+            overflow: hidden;
+        }
+        .column {
+            width: 31.33%; 
+            background-color: green; 
+            float: left; 
+            margin: 0 1%;
+        }
+        .column:last-child { 
+            float: none; 
+            overflow: hidden; 
+        }
+        .ul-style {
+            width: 100%;
+            border:  5px solid red;
+            overflow: hidden;
+            background-color: #f40;
+        }
+        .ul-style li {
+            width: 20%;
+            float: left;
+            height: 100px;
+            background-color: pink;
+        }
+        /* 总结：外边距叠加本身是由BFC引起的，但是现在我们要用BFC来解决这个问题，颇有点以毒攻毒的味道。BFC就相当于讯悟空画的圈 形成了一个隔离区 */
+    </style>
+</head>
+<body>
+    <ul class="clearfix">
+        <li>这是第1个盒子</li>
+        <li>这是第2个盒子</li>
+        <li>这是第3个盒子</li>
+    </ul>
+    
+    <ul class="clear">
+        <li>这是第4个盒子</li>
+        <li>这是第5个盒子</li>
+        <li>这是第6个盒子</li>
+    </ul>
+
+    <div class="wrapper">
+        <div class="top"></div>
+    </div>
+
+    <div class="bottom">
+
+    </div>
+    
+    <p>哈哈哈</p>
+    <p>呵呵呵</p>
+    <p>呼呼呼</p>
+
+    <ul class="ul-style">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <!-- <div class="container"> <div class="floated">Floated div</div> <p class="over">Quae hic ut ab perferendis sit quod architecto,dolor debitis quam rem provident aspernatur tempora expeditaQuae hic ut ab perferendis sit quod architecto,dolor debitis quam rem provident aspernatur tempora expeditaQuae hic ut ab perferendis sit quod architecto,dolor debitis quam rem provident aspernatur tempora expeditaQuae hic ut ab perferendis sit quod architecto,dolor debitis quam rem provident aspernatur tempora expedita.</p> </div> -->
+    <div class="container"> <div class="column">column 1</div> <div class="column">column 2</div> <div class="column">column 3</div> </div>
+    <script>
+    // 附链接 1. https://x-front-team.github.io/2017/02/19/CSS%E4%B8%AD%E7%9A%84BFC/ 
+    // 2.https://zhuanlan.zhihu.com/p/30168984
+    
+    </script>
+</body>
+</html>
