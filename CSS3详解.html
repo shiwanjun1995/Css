@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3入门详解</title>
+    <style>
+        body {
+            background-color: #999;
+        }
+        [title] {
+            color: #f40;
+        }
+        [title = 'box'] {
+            color: #00ff;
+        }
+        [title *= 'warpper'] {
+            color: #00ff00;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #f40;
+            background-color: hsla(120, 20%, 80%, 1);
+        }
+        .ao {
+            text-shadow: -1px -1px 1px #fff,1px 1px 1px #000;
+            line-height: 20px;
+            font-size: 20px;
+            color: #999;
+        }
+        .to {
+            text-shadow: -1px -1px 1px #000,1px 1px 1px #fff;
+            line-height: 20px;
+            font-size: 20px;
+            color: #999;
+        }
+        .box-size1 {
+            width: 200px;
+            height: 200px;
+            border: 5px solid #0000ff;
+            box-sizing: border-box;
+        }
+        .box-size2 {
+            width: 200px;
+            height: 200px;
+            border: 5px solid #00ff00;
+            box-sizing: content-box;
+        }
+        .box-size1 img,
+        .box-size2 img {
+            width: 100%;
+        }
+        .box-bgi {
+            width: 400px;
+            height: 850px;
+            margin: 20px auto;
+            background: url('./imgs/man.jpg') no-repeat left top,
+                        url('./imgs/woman.jpg') no-repeat left bottom; 
+            background-size: contain;
+            background-color: #ccc;
+        }
+        .jianbian {
+            width: 400px;
+            height: 150px;
+            margin: 10px auto;
+            /* 线性渐变 */
+            background-image: linear-gradient(
+                /*渐变的方向*/
+                45deg,
+                /*渐变开始的颜色*/
+                #88f5ea,
+                /*渐变结束的颜色*/
+                #d36be7
+            );
+        }
+        .jianbian1 {
+            width: 500px;
+            height: 100px;
+            margin: 10px auto;
+            background-image: linear-gradient(
+                135deg,
+                yellow 20%,
+                black 20%,
+                black 40%,
+                yellow 40%,
+                yellow 60%,
+                black 60%,
+                black 80%,
+                yellow 80%,
+                yellow 
+            );
+            background-size: 66px 100px;
+        }
+        .sun {
+            width:200px;
+            height:200px;
+            margin: 10px;
+            background: radial-gradient(
+                /* 100px是渐变辐射的范围 0 0 指的是圆心在盒子的左上角 */
+                100px at 0 0,
+                /*渐变起始色*/
+                orange,
+                /*渐变终止色*/
+                #ff4500
+            );
+            border-radius: 0 0 100% 0;
+            
+        }
+        .rotate {
+            width: 100px;
+            height: 100px;
+            background-color: #0df3cd;
+            margin: 100px auto;
+            transition: all 2s linear;
+        }
+        .rotate:hover {
+            transform: rotate(360deg);
+            animation: infiniteloop 1s linear infinite;  /*开始动画后无限循环，用来控制rotate*/
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            /* https://www.runoob.com/cssref/css3-pr-animation.html */
+        }
+        
+        @keyframes infiniteloop {
+            0% { transform: rotate(0deg) }
+            50% { transform: rotate(180deg) }
+            100% { transform: rotate(360deg) }
+        }
+
+    .box-3D {
+         width: 200px;
+         height: 200px;
+         margin: 150px auto;
+
+         position: relative;
+        
+         /* 透视 */
+         /* perspective: 1000px; */
+
+         /* 转为立方体 */
+         transform-style: preserve-3d;
+
+         transform: rotateY(45deg) rotateX(30deg);
+    }
+
+    .box-3D>div {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+    }
+
+    .left {
+        background-color: pink;
+        transform: rotateY(-90deg) translateZ(150px);
+    }
+
+    .right {
+        background-color: green;
+        transform: rotateY(90deg) translateZ(150px);
+    }
+
+    .top {
+        background-color: orange;
+        transform: rotateX(90deg) translateZ(150px);
+    }
+
+    .bottom {
+        background-color: blue;
+        transform: rotateX(-90deg) translateZ(150px);
+    }
+
+    .before {
+        background-color: red;
+        transform: translateZ(150px);
+    }
+
+    .back {
+        background-color: greenyellow;
+        transform: translateZ(-150px);
+    }
+
+    </style>
+</head>
+<body>
+    <!-- 1.选择器 -->
+    <!-- 属性选择器就是通过属性来选择元素。 -->
+    <!-- [attr]	存在attr属性即可
+    [attr=val]	属性值完全等于val
+    [attr*=val]	属性值里包含val字符并且在“任意”位置
+    [attr^=val]	属性值里包含val字符并且在“开始”位置
+    [attr$=val]	属性值里包含val字符并且在“结束”位置 -->
+    <!-- 属性选择器 -->
+    <p title="">p元素</p>
+    <h1 title="box">标题元素</h1>
+    <span title="box warpper">span元素</span>
+
+    <div class="box"></div>
+
+    <div class="ao">我是凹文字</div>
+    <div class="to">我是凸文字</div>
+
+    
+    <!-- 伪类选择器 -->
+    <!-- :first-child	其父元素的第1个子元素
+    :last-child	其父元素的最后1个子元素
+    :nth-child(n)	其父元素的第n个子元素
+    :nth-last-child(n)	其父元素的第n个子元素（倒着数）
+    :empty选中没有任何子节点的元素
+    :not(selector)除selector（任意选择器）外的元素会被选中 -->
+
+    <!-- 伪元素选择器 -->
+    <!-- ::first-letter 文本的第一个单词或字（如中文、日文、韩文等）
+    ::first-line 文本第一行；
+    ::selection 可改变选中文本的样式；
+    ::before和::after -->
+
+    <!-- 注意：:after、:before在旧版本里是伪元素，CSS3的规范里“:”用来表示伪类，“::”用来表示伪元素，但是在高版本浏览器下:after、:before会被自动识别为::after、::before，这样做的目的是用来做兼容处理。 -->
+
+    <!-- 2.颜色 -->
+    <!-- 新增了RGBA、HSLA模式，其中的A表示透明度，即可以设置颜色值的透明度，相较opacity，它们不具有继承性，即不会影响子元素的透明度。 -->
+    <h3>
+        rgba 取值 0~255
+        H 色调   取值范围0~360   0/360表示红色、120表示绿色、240表示蓝色
+        S 饱和度 取值范围0%~100%
+        L 亮度   取值范围0%~100%
+        A 透明度 取值范围0~1
+    </h3>
+
+    <!-- 注意：Alpha和opacity的区别主要就是，opacity具有继承性，父盒子设置该属性，下面所有的子元素都会继承该属性。transparent不可调节透明度，始终完全透明。 -->
+
+    <!-- 3.文本阴影 -->
+    <h3>
+        text-shadow，可分别设置偏移量、模糊度、颜色（可设透明度）。
+        水平偏移量 正值向右 负值向左；
+        垂直偏移量 正值向下 负值向上；
+        模糊度是不能为负值；
+        阴影颜色。
+    </h3>
+    <!-- 4.盒子模型 -->
+    <h3>
+        CSS3中可以通过box-sizing来指定盒模型，即可指定为content-box、border-box，这样我们计算盒子大小的方式就发生了改变。
+        box-sizing: border-box盒子大小为 width 
+        box-sizing: content-box盒子大小为 width + padding + border
+        注：上面的标注的width指的是CSS属性里设置的width: length，content的值是会自动调整的。
+    </h3>
+
+    <div class="box-size1">
+        <img src="./imgs/man.jpg" alt="">
+    </div>
+    <div class="box-size2">
+        <img src="./imgs/woman.jpg" alt="">
+    </div>
+
+    <!-- 5.边框 -->
+    <!-- border-radius: 10px;表示四个角的横纵轴半径都为10px；
+    border-radius: 10px 5px;表示1和3角横纵轴半径都为10px，2和4角横纵轴半径为5px；
+    border-radius: 10px 5px 8px;表示1角模纵轴半径都为10px，2和4角横纵轴半径都为8px，3角的横纵轴半径都为8px；
+    border-radius: 10px 8px 6px 4px;表示1角横纵轴半径都为10px，表示2角横纵轴半径都为8px，表示3角横纵轴半径都为6px，表示4角横纵轴半径都为6px； -->
+    椭圆：  /* 当盒子长宽不一致时，圆角属性 分别设置宽度的一半，以及长度的一半，即是椭圆 */
+    /* 或者直接 border-radius:50%; */
+    正圆： /* 当盒子长宽相等时，圆角属性分别设置宽度的一半，以及长度的一半，即是正圆 */
+    /* 或者直接 border-radius:50%; */
+    <!-- 边框阴影 box-shadow，与文字阴影类似，可分别设置盒子阴影偏移量、模糊度、颜色（可设透明度）。 -->
+    <h3>
+        水平偏移量 正值向右 负值向左；
+        垂直偏移量 正值向下 负值向上；
+        模糊度是不能为负值；
+        inset可以设置内阴影；
+        注：设置边框阴影不会改变盒子的大小，即不会影响其兄弟元素的布局。可以设置多重边框阴影，实现更好的效果，增强立体感，符合渐进增强，实际开发中可以大胆使用。
+    </h3>
+ 
+    <!-- 6.背景 背景在CSS3中也得到很大程度的增强，比如背景图片尺寸、背景裁切区域、背景定位参照点、多重背景等。-->
+    <h3>
+        可以设置长度单位(px)或百分比（设置百分比时，参照盒子的宽高）
+        设置为cover时，会自动调整缩放比例，保证图片始终填充满背景区域，如有溢出部分则会被隐藏。
+        设置为contain会自动调整缩放比例，保证图片始终完整显示在背景区域。
+    </h3>
+    1.通过background-origin可以设置背景图片定位(background-position)的参照原点。
+        border-box以边框做为参考原点；
+        padding-box以内边距做为参考原点；
+        content-box以内容区做为参考点；
+    2.通过background-clip，可以设置对背景区域进行裁切，即改变背景区域的大小。
+
+    <!-- 多重背景 -->
+    <!-- 以逗号分隔可以设置多背景，可用于自适应布局。在一个盒子里可以设置多个背景图片，通过背景定位的功能将两张图片组装起来。 -->
+    <!-- 从效果图中我们可以看到，在盒子里面设置了两张背景图，分别是上面一部分，下面一部分。这里故意给盒子高度拉长了一点，并且设置了一个灰色的背景，为的就是大家能够清楚的看到上下两部分的背景图。 -->
+    <div class="box-bgi"></div>
+
+    <!-- 7.线性渐变 -->
+    <!-- 渐变是CSS3当中比较丰富多彩的一个特性，通过渐变我们可以实现许多炫丽的效果，有效的减少图片的使用数量，并且具有很强的适应性和可扩展性。 -->
+    <!-- linear-gradient线性渐变指沿着某条直线朝一个方向产生渐变效果。 -->
+    <div class="jianbian"></div>
+    <div class="jianbian1"></div>
+
+    <!-- 8.径向渐变 -->
+    <!-- radial-gradient径向渐变指从一个中心点开始沿着四周产生渐变效果。 -->
+    <div class="sun"></div>
+
+    <!-- 9.过渡 -->
+    <!-- 过渡是CSS3中具有颠覆性的特征之一，可以实现元素不同状态间的平滑过渡（补间动画），经常用来制作动画效果。 -->
+    
+    <h3>
+        /*          属性   执行时间 延时时间 过渡类型*/
+        transition: all    2s       1s      linear;
+
+        /*设置哪些属性要参加到动画效果中*/
+        transition-property: all;
+        transition-duration: 2s 设置动画过渡执行时间
+
+        transition-timing-function设置过渡速度类型
+        transition-timing-function:linear; 
+        /* ease| ease-in | ease-out | ease-in-out | linear; */
+
+        transition-delay设置过渡延时
+        /*1s后，过渡动画开始过渡*/
+        transition-delay: 1s;
+    </h3>
+
+    <!-- 10.2D转换 -->
+    <!-- 转换（transform）是CSS3中具有颠覆性的特征之一，可以实现元素的位移、旋转、变形、缩放，甚至支持矩阵方式，配合即将学习的过渡和动画知识，可以取代大量之前只能靠Flash才可以实现的效果。 -->
+    
+    <h3>
+        CSS3中，通过translate属性对元素进行位移。
+        移动translate(x, y)可以改变元素的位置，x、y可为负值；
+
+        a、移动位置相当于自身原来位置
+        b、y轴正方向朝下
+        c、除了可以像素值，也可以是百分比，相对于自身的宽度或高度
+        transform: translate(100px, 30px);
+    </h3>
+
+    <!-- 11.缩放 -->
+    <h3>
+        缩放scale(x, y)可以对元素进行水平和垂直方向的缩放，x、y的取值可为小数；
+        /*宽和高都放大1倍*/
+        transform: scale(1.5);
+    </h3>
+
+    <!-- 12.旋转 -->
+    <h3>
+        旋转rotate(deg)可以对元素进行旋转，正值为顺时针，负值为逆时针；
+        a、当元素旋转以后，坐标轴也跟着发生的转变
+        b、调整顺序可以解决，把旋转放到最后
+        /* 顺时针旋转 90度 */
+        transform: rotate(90deg);
+    </h3>
+    <div class="rotate"></div>
+
+    <!-- 13.倾斜 -->
+    <h3>
+        倾斜skew(deg, deg)可以使元素按一定的角度进行倾斜，可为负值，第二个参数不写默认为0。
+        transform: skew(30deg,30deg);
+    </h3>
+
+    <!-- 14.透视 -->
+    <h3>
+        透视可以将一个2D平面，在转换的过程当中，呈现3D效果。（没有perspective，便“没有”Z轴）并非任何情况下都需要透视效果。
+        给当前元素的直接父元素添加perspective: 800px;透视属性，注意这个值可以是随意的，但是最佳展现距离是600px~1000px。
+    </h3>
+    <h2>
+        什么是3D呈现呢？不要与前面的透视搞混，透视只能使一个物体呈现近大远小的状态，不能呈现出一个立体感的东西，比如我在页面上用六个面组成一个正方形，通过透视你可能只能改变他的远近距离，并不能让他看起来像个立体的盒子，所以这里需要用到另一个属性：transform-style。
+        transform-style: preserve-3d | flat
+        flat：所有子元素在2D平面呈现
+        preserve-3d：保留3D空间
+        必须设置在父元素身上并且父元素有转换（就是有变形）并且子元素也得有转换（变形）才能看得到效果。
+    </h2>
+
+    
+    <div class="box-3D">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="before"></div>
+        <div class="back"></div>
+    </div>
+
+    <!-- 15.如何实现动画 -->
+    <h2>
+        必要点：
+        a、通过@keyframes指定动画序列；
+        b、通过百分比将动画序列分割成多个节点；
+        c、在各节点中分别定义各属性
+        d、通过animation将动画应用于相应元素；
+    </h2>
+    <h3>
+        动画关键属性
+        a、animation-name设置动画序列名称
+        b、animation-duration动画持续时间
+        c、animation-delay动画延时时间
+        d、animation-timing-function动画执行速度，linear、ease等
+        e、animation-play-state动画播放状态，running、paused等
+        f、animation-direction动画逆播，alternate等
+        g、animation-fill-mode动画执行完毕后状态，forwards、backwards等
+        h、animation-iteration-count动画执行次数，inifinate等
+        i、steps(60)表示动画分成60步完成
+    </h3>
+</body>
+</html>
