@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--[if lte IE 8]>
+    <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+    <![endif]--> 
+    <style>
+        .file-read {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #f40;
+        }
+        .info {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            line-height: 500px;
+            text-align: center;
+            transform:translate(-50%,-50%);
+            box-shadow: 0 0 10px 2px rgba(0,0,0,.5); 
+            border-radius: 5px;
+        }
+        .info img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <input type="text" autocomplete="on" pattern="[A-Za-z]{3}" title="三位英文字母">
+        <input type="submit">
+    </form>
+    <form action="">
+        <input type="text" name="username" id='user' pattern="">
+        密 码： <input type="text" name="pwd" id="pwd" pattern="\d+">
+        <input type="submit">
+    </form>
+    <p data-my-info="information" class="tag">这是一段描述！</p>
+    <div class="file-read">
+            <input type="file" multiple name="" id="">
+            <button>点击读取文件</button>
+    </div>
+    <!-- 目标元素 -->
+    <div class="info">将图片拖拽至此</div>
+    
+    <!-- HTML5并不仅仅只是作为HTML标记语言的一个最新版本，更重要的是它制定了Web应用开发的一系列标准，成为第一个将Web做为应用开发平台的HTML语言。 -->
+    <script>
+    // HTML5定义了一系列新元素，如新语义标签、智能表单、多媒体标签等，可以帮助开发者创建富互联网应用，还提供了一系列Javascript API，如地理定位、重力感应、硬件访问等，可以在浏览器内实现类原生应用，甚至结合Canvas我们可开发网页版游戏，同时结合CSS3的过渡、转换、动画等特性，可以极大的增强用户体验，提升开发功能的可应用性。
+    // 我们日常讨论的H5其实是一个泛称，它指的是由HTML5 + CSS3 + Javascript等技术组合而成的一个应用开发平台。
+    // 随着Web技术的更新，HTML也先后经历了HTML4.01、XHTML1.0、HTML5几个重要的版本，在版本的演变过程中新增或废弃了一些属性，同时对语法规范也做了一些调整，为了能够保证浏览器可以兼容不同版本语法规范的，我们可以使用<!DOCTYPE>指示浏览器应该如何处理我们的HTML。
+
+    // 1.html5shiv 是一个针对 IE 浏览器的 HTML5 JavaScript 补丁，目的是让 IE 识别并支持 HTML5 元素。
+    // html5shiv主要解决HTML5提出的新的元素不被IE6-8识别，这些新元素不能作为父节点包裹子元素，并且不能应用CSS样式的问题。
+    </script>   
+    <!-- 引入远程静态资源库： -->
+
+    <!-- lte：表示小于等于；当浏览器版本小于等于IE8的时候，引用html5shiv.min.js文件。 -->
+    <!-- 以上的注释代码只有在IE浏览器下次才会识别里面的内容，其他浏览器直接当注释识别。 -->
+    <script>
+        // 1.表单 新增了一些新的属性 <form>和<input>标签添加了几个新属性。其中<form>标签的autocomplete、novalidate属性
+        
+        // 2.表单属性
+        // autocomplete 属性规定form或input域应该拥有自动完成功能。当用户在自动完成域中开始输入时，浏览器应该在该域中显示填写的选项。    
+        // placeholder属性提供一种提示（hint），描述输入域所期待的值。简短的提示在用户输入值前会显示在输入域上。
+        // autofocus属性是一个boolean属性。autofocus属性规定在页面加载时，域自动地获得焦点。
+        // multiple属性是一个boolean属性。multiple属性规定<input>元素中可选择多个值。
+        // required属性是一个boolean属性。required属性规定必须在提交之前填写输入域（不能为空）。
+        // pattern属性描述了自定义一个正则表达式用于验证<input>元素的值。
+
+        // 3.表单事件
+        // oninput：用户输入的时候触发的事件
+        // oninvalid：表单验证无法通过时候触发的事件
+        var user = document.getElementById('user')
+        var pwd = document.getElementById('pwd')
+
+        // 用户输入的时候触发
+        user.oninput = function () { console.log('触发了oninput')}
+        // 验证无法通过的时候触发
+        pwd.oninvalid = function () { console.log('触发了验证无法通过'); }
+
+        // 注意：这里主要是说下如何修改placeholder的默认样式。
+        // 火狐： input::-moz-placeholder{}
+        // 谷歌： input::-webkit-input-placeholder {} 通过双伪元素选择器，即可改变placeholder文字的样式。
+
+        // 4. 多媒体标签 在HTML5之前，在网页上播放音频/视频的通用方法是利用Flash来播放，但是大多情况下，并非所有用户的浏览器都安装了Flash插件，由此使得处理音频/视频播放变的非常复杂，并且移动设备的浏览器并不支持Flash插件。
+        // 音频 HTML5通过<audio>标签来解决音频播放的问题。
+            // <audio>
+            //     <!-- 通过source标签指定多格式音频文件 -->
+            //     <source src="xxx.ogg" type="audio/ogg">
+            //     <source src="xxx.mp3" type="audio/mpeg">
+            //     <source src="xxx.wav" type="audio/wav">
+            //     您的浏览器不支持 audio 元素。
+            // </audio>
+
+        // 通过附加属性可以更友好控制音频的播放. autoplay 自动播放 controls 是否显示控制条 loop 循环播放
+        // 视频 HTML5通过<video>标签来解决音频播放的问题。
+
+        // 启用自动播放，并重载视频：
+        // var video=document.getElementById("video1");
+        // video.autoplay = true;
+        // video.load();
+        // 启用视频控件：
+        // var video = document.getElementById("video1");
+        // video.controls = true;
+        // 获得当前视频的URL：
+        // video = document.getElementById("video1");
+        // alert(video.currentSrc);
+
+        // 5.html5中新添加了一个操作类名的对象：classList。我们可以通过它里面的方法对元素的类进行操作。
+        // 添加类 add() 移除类 remove() 切换类 toggle()
+        // 是否存在某个类（contains）判断获取的元素中是否存在某个类名，返回值为true或者false。
+
+        // 6.自定义属性 
+        // TML5规定可以为元素添加非标准的属性，但要添加前缀data-，目的是为元素提供与渲染无关的信息，或者提供语义信息。这些属性可以任意添加、随便命名，只要以data-开头。
+        // 获取自定义属性（dataset['自定义属性名称']）
+        // 当自定义属性中除了data-之外中间出现“-”连接符时，设置和获取的时候需要将属性名转成驼峰的格式才能正常的设置和获取。
+        var tag = document.querySelector('.tag')
+        tag.dataset['myInfo'] = 'info'
+        console.log(tag.dataset['myInfo']);
+
+        // 7.网络状态
+        window.addEventListener('online', function(){
+            // online是网络从无网到有网的 时候触发
+        })
+        window.addEventListener('offline', function(){
+            // offline是网络从有网到无网的时候触发
+        })
+
+        // 8.地理定位
+        // navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options) // 方法：获取当前地理信息
+
+        window.navigator.geolocation.getCurrentPosition(function(position){
+            // 纬度
+            var lat = position.coords.latitude;
+            // 经度
+            var long = position.coords.longitude;
+
+            console.log('你当前的纬度为：' + lat + '经度为：' + long)
+
+        },function(err){  // 错误时回调信息
+            // if(err.code == 1){
+            //     alert('没有权限')
+            // }else if(err.code == 2){
+            //     alert('内部错误');
+            // }else{
+            //     alert('超时')
+            // }
+        },{
+            // 超时设置
+            timeout: 5000
+        });
+
+        // 9.web存储
+        // 随着互联网的快速发展，基于网页的应用越来越普遍，同时也变的越来越复杂，为了满足各种各样的需求，会经常性在本地存储大量的数据，传统方式我们以document.cookie来进行存储的，但是由于其存储大小只有4k左右，并且解析也相当的复杂，每一次发送请求都会携带上cookie，会造成带宽的浪费，给开发带来诸多不便，HTML5规范则提出解决方案。web存储的含义是将数据存储到用户的电脑上，这样可以缓解服务器的压力，并且提高体验。
+        // 特性：// 设置、读取方便
+                // 容量较大，sessionStorage约5M，localStorage约20M
+                // 只能存储字符串，可以将对象JSON.stringify()转成字符串后存储
+        // 方法详解： setItem(key, value)设置存储内容
+                // getItem(key)读取存储内容
+                // removeItem(key)删除键值为key的存储内容
+                // clear()清空所有存储内容
+                // key(n)以索引值来获取键名
+                // length 存储的数据的个数
+        // 存储值
+        window.localStorage.setItem('password','wanjunb308020')
+        window.sessionStorage.setItem('spassword','swanjunb308020')
+        // 索引键的名字
+        console.log( window.localStorage.key(0));
+        console.log( window.sessionStorage.key(0));
+        // 取数据
+        console.log(window.localStorage.getItem('password'));
+        console.log(window.sessionStorage.getItem('spassword'));
+        // 获取本地数据的长度
+        console.log(window.localStorage.length);
+        console.log(window.sessionStorage.length);
+        // 删除数据
+        window.localStorage.removeItem('password')
+        window.sessionStorage.removeItem('spassword')
+        // 清空所有的数据
+        window.localStorage.clear();
+        window.sessionStorage.clear();
+
+        // sessionStorage
+        // 特点：
+        // 生命周期为关闭当前页面窗口
+        // 不能多窗口下数据共享（同源策略）
+        // 通过跳转可以解决，页面跳转的时候可以通过session实现数据共享
+
+        // localStorage
+        // 特点：
+        // 生命周期为永久有效，除非手动删除或用代码删除
+        // 可以多窗口共享（同源策略）
+        // 一些不涉及到安全的一些数据（不要太过庞大）都可以存储到本地
+
+        // 比较cookie，session，local三者之间的相同点和不同点
+        // 相同点：
+        // 都是存储数据，存储在web端，并且都是同源
+
+        // 不同点：
+        // （1）cookie只有4K大小 并且每一次请求都会带上cookie体验不好，浪费带宽
+        // （2）session和local直接存储在本地，请求不会携带，并且容量比cookie要大的多
+        // （3）session是临时会话，当窗口被关闭的时候就清除掉 ，而local永久存在，cookie有过期时间
+        // （4）cookie和local都可以支持多窗口共享，而session不支持多窗口共享 但是都支持a链接跳转的新窗口
+    
+        // 10.文件读取 通过FileReader对象我们可以读取本地存储的文件，可以使用File对象来指定所要读取的文件或数据。其中File对象可以是来自用户在一个<input>元素上选择文件后返回的FileList对象，也可以来自由拖放操作生成的DataTransfer。
+        // 由于HTML5中我们可以通过为表单元素添加multiple属性，因此我们通过<input>上传文件后得到的是一个FileList对象（伪数组形式）。
+
+        var btn = document.querySelector('button')
+        var file = document.querySelector('input[type="file"]')
+        var fr = []
+        btn.onclick = function () {  
+            for ( var i = 0; i < file.files.length; i++ ) {
+                var data = file.files[i]
+                // 创建一个读取对象
+                fr[i] = new FileReader()
+                // 读取文件
+                fr[i].readAsDataURL(data)
+                 // 读取文件是一个耗时的操作，所以需要用事件监听读取完毕，
+                // load事件是文件读取完毕之后触发的事件
+            }
+            for (var j = 0; j < fr.length; j++) {
+                fr[j].addEventListener('load', function(){
+                    //获取读取的结果  
+                    //result属性里面存储的就是读取文件的结果
+                    console.log(fr);
+                    var result = this.result;    
+                    // 创建图片对象
+                    var img = document.createElement('img');
+                    img.src = result;
+                    document.body.appendChild(img); 
+                })
+            }    
+        }
+
+        // 11.拖拽  在HTML5的规范中，我们可以通过为元素增加draggable="true"来设置此元素是否可以进行拖拽操作，其中图片、链接默认是开启的。
+        // （1）、拖拽元素
+        // ondrag 应用于拖拽元素，整个拖拽过程都会调用
+        // ondragstart 应用于拖拽元素，当拖拽开始时调用
+        // ondragend 应用于拖拽元素，当拖拽结束时调用
+
+        // （2）、目标元素
+        // ondragenter 应用于目标元素，当拖拽元素进入时调用
+        // ondragleav 应用于目标元素，当鼠标离开目标元素时调用
+        // ondragver 应用于目标元素，当停留在目标元素上时调用
+        // ondrop 应用于目标元素，当在目标元素上松开鼠标时调用
+
+        var info = document.querySelector('.info')
+        var oHtml = document.documentElement;
+         // 问题：浏览器默认会将外部拖拽的文件直接打开，我们需要阻止掉
+        // 将外部文件拖拽进浏览器里面松开鼠标的时候其实就是在html页面上触发了drop事件，我们只需要在drop事件的时候阻止默认事件
+        oHtml.ondrop = function(e){
+            // 阻止默认事件
+            e.preventDefault();
+        }
+        oHtml.ondragover = function (e) { 
+            e.preventDefault()
+         }
+
+         info.ondrop = function (e) {  
+             console.log(e);
+             var data = e.dataTransfer.files[0]
+             console.log(data)
+             var file = new FileReader() // 创建对象
+             file.readAsDataURL(data) // 读取对象
+             
+             file.addEventListener('load',function () {  // 文件读取完毕之后执行的事件
+                var result = this.result; // result属性里面存储的就是读取文件的结果
+                // console.log(result);
+                var img = document.createElement('img')
+                img.src = result
+                // info.innerHTML = '' // 去除将图片拖拽至此字段
+                info.innerText = '' // 去除将图片拖拽至此字段
+                info.appendChild(img)
+             })
+             
+         }
+         
+    </script>
+</body>
+</html>
