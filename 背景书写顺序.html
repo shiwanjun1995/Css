@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>background书写顺序</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body, .bg, .bgm {
+            height: 100%;
+        }
+        .bg {
+            background: #0f0 url('http://cdn.dowebok.com/139/images/bg.jpg') no-repeat center;
+        }
+        .bgm {
+            background-color: #0f0; /*背景颜色*/
+            background-image: url(https://www.w3school.com.cn/i/eg_bg_04.gif); /*背景图片*/
+            background-repeat: no-repeat; /*是否平铺*/
+            background-attachment: scroll; /*规定背景图像是否固定或者随着页面的其余部分滚动*/
+            background-position: center;/*如果只规定了一个关键词，那么第二个值将是"center"。*/
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="bg"></div> -->
+    <div class="bgm"></div>
+    <script>
+        // 复合属性的方法 书写格式
+        // background : background-color background-image background-repeat background-attachment background-position;
+       
+        // 默认值
+        // background: transparent none repeat scroll 0% 0%;
+
+        // 解释
+        // background: 透明 / 无背景图片 / 平铺 / 背景图片随文本滚动(不理解的一定要自己动手试一下) / 位于元素左上角
+        // background的书写顺序是比较容易理解的。
+
+        // 1. 首先要有背景颜色 background-color ，在背景图片（如果有设置）未载入之前，先显示的是背景颜色。默认为 transparent（透明，即应用父元素或 BODY 的背景设置），可以省略，不过在应用一些JS事件时最好将它写上，以示规范；
+        // 2. 接下来就是背景图片 background-image 。如果没有此项，那么后面的项就没有任何意义了；
+        // 3. 是否平铺 background-repeat 要写在 background-position 之前，很容易理解，如果此项设置了 repeat （铺满整个元素），那么 position 设置就基本失去作用了；
+        // 4. scroll 默认值。背景图像会随着页面其余部分的滚动而移动。 fixed 一般用在 body 上，其他地方不大见到 当页面的其余部分滚动时，背景图像不会移动。提示：您需要把 background-attachment 属性设置为 "fixed"，才能保证该属性在 Firefox 和 Opera 中正常工作。
+        // 5. background-position：有2个值，垂直位置和水平位置。按代码写法是没有顺序的：比如说背景图片位于元素的右下角，可以写成 bottom right ，也可以写成 right bottom ；如果按百分比写法是有顺序的：比如 20% 30% ，第1个百分比表示水平位置，第2个百分比表示垂直位置。有意思的是这里的垂直居中是 center 而不是 middle 。你可以设置一个 center 表示图片的居中，相当于 center center 或者 50% 50% 。
+        
+        // 参考文章: https://www.cnblogs.com/hello-web/p/7237765.html
+    </script>
+</body>
+</html>
