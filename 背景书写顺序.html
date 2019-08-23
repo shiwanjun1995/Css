@@ -21,7 +21,10 @@
             background-image: url(https://www.w3school.com.cn/i/eg_bg_04.gif); /*背景图片*/
             background-repeat: no-repeat; /*是否平铺*/
             background-attachment: scroll; /*规定背景图像是否固定或者随着页面的其余部分滚动*/
-            background-position: center;/*如果只规定了一个关键词，那么第二个值将是"center"。*/
+            background-position: center; /*如果只规定了一个关键词，那么第二个值将是"center"。*/
+            background-size: auto; /*背景图像的尺寸；默认值为auto。一般是大的图片*/
+            background-origin: padding-box; /*定义背景图像的初始位置*/
+            background-clip: border-box; /*定义背景的绘制区域*/
         }
     </style>
 </head>
@@ -44,7 +47,10 @@
         // 3. 是否平铺 background-repeat 要写在 background-position 之前，很容易理解，如果此项设置了 repeat （铺满整个元素），那么 position 设置就基本失去作用了；
         // 4. scroll 默认值。背景图像会随着页面其余部分的滚动而移动。 fixed 一般用在 body 上，其他地方不大见到 当页面的其余部分滚动时，背景图像不会移动。提示：您需要把 background-attachment 属性设置为 "fixed"，才能保证该属性在 Firefox 和 Opera 中正常工作。
         // 5. background-position：有2个值，垂直位置和水平位置。按代码写法是没有顺序的：比如说背景图片位于元素的右下角，可以写成 bottom right ，也可以写成 right bottom ；如果按百分比写法是有顺序的：比如 20% 30% ，第1个百分比表示水平位置，第2个百分比表示垂直位置。有意思的是这里的垂直居中是 center 而不是 middle 。你可以设置一个 center 表示图片的居中，相当于 center center 或者 50% 50% 。
-        
+        // 6. background-size，设置背景图像的尺寸；默认值为auto。第一个值为宽度 第二个值为高度 两个关键词 cover 不改变图像宽高比例，在水平和垂直方向都铺满整个元素，有可能导致一部分图像溢出。contain 不改变图像宽高比例，尽可能拉伸，直到某一方向铺满整个元素，有可能导致另一方向没有铺满。
+        // 7. background-origin，定义背景图像的初始位置 border-box，边框左上角 padding-box，padding区域左上角；默认值。content-box，内容区左上角。
+        // 8. background-clip，指定了背景的绘制区域。border-box-(默认)背景被绘制到边框的外边缘 padding-box-背景被绘制到填充的外部边缘 content-box—背景被绘制在内容框中
+
         // 参考文章: https://www.cnblogs.com/hello-web/p/7237765.html
     </script>
 </body>
