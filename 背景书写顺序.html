@@ -14,7 +14,8 @@
             height: 100%;
         }
         .bg {
-            background: #0f0 url('http://cdn.dowebok.com/139/images/bg.jpg') no-repeat center;
+            /* background: #0f0 url('http://cdn.dowebok.com/139/images/bg.jpg') no-repeat center center 100%; */
+            background: #0f0 url('http://cdn.dowebok.com/139/images/bg.jpg') no-repeat center center / 100%;
         }
         .bgm {
             background-color: #0f0; /*背景颜色*/
@@ -29,8 +30,8 @@
     </style>
 </head>
 <body>
-    <!-- <div class="bg"></div> -->
-    <div class="bgm"></div>
+    <div class="bg"></div>
+    <!-- <div class="bgm"></div> -->
     <script>
         // 复合属性的方法 书写格式
         // background : background-color background-image background-repeat background-attachment background-position;
@@ -51,7 +52,9 @@
         // 7. background-origin，定义背景图像的初始位置 border-box，边框左上角 padding-box，padding区域左上角；默认值。content-box，内容区左上角。
         // 8. background-clip，指定了背景的绘制区域。border-box-(默认)背景被绘制到边框的外边缘 padding-box-背景被绘制到填充的外部边缘 content-box—背景被绘制在内容框中
 
-        // 参考文章: https://www.cnblogs.com/hello-web/p/7237765.html
+        // 注意：如果同时设置了“position”和“size”两个属性，应该用左斜杠“/”，把两个参数值隔开：“position / size”。
+
+        // 参考文章: https://www.cnblogs.com/hello-web/p/7237765.html、https://blog.csdn.net/u013806814/article/details/51619407
     </script>
 </body>
 </html>
