@@ -111,6 +111,24 @@
     border: 1px dashed #000;
     margin: auto;
   }
+
+  .parent5 {
+    width: 80%;
+    height: 300px;
+    margin: 50px;
+    border: 1px solid #f40;
+    background: #09c;
+    display: grid;
+  }
+
+  .children5 {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    border: 1px dashed #000;
+    align-self: center;
+    justify-self: center;
+  }
   
 </style>
 
@@ -139,15 +157,21 @@
     <div class="children3"></div> -->
   </div>
 
-  <h1>4.flex + margin auto 父元素设置为flex,子元素设置为水平居中 (可支持多个子元素)</h1> 
+  <h1>4.flex + margin auto 父元素设置为flex，子元素设置为水平居中 (可支持多个子元素)</h1> 
   <div class="parent4">
     <div class="children4"></div>
     <div class="children4"></div>
     <div class="children4"></div>
   </div>
+
+  <h1>5.使用grid网格布局，子元素可以不用设置宽高</h1>
+  <div class="parent5">
+    <div class="children5"></div>
+    <!-- <div class="children5"></div>
+    <div class="children5"></div> -->
+  </div>
   <script>
-  
-  
+  // 参考文章：https://www.imooc.com/article/17652、https://www.imooc.com/article/271180
   </script>
 </body>
 
