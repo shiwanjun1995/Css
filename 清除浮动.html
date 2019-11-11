@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浮动元素脱离标准流</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .father {
+      border: 1px solid red;
+      width: 300px;
+    }
+    .father_1 {
+      border: 1px solid red;
+      width: 300px;
+      overflow: hidden;
+    }
+    .big {
+      width: 100px;
+      height: 200px;
+      background-color: purple;
+      float: left;
+    }
+    .small {
+      width: 80px;
+      height: 80px;
+      background-color: blue;
+      float: left;
+    }
+    .footer {
+      width: 400px;
+      height: 100px;
+      background-color: pink;
+    }
+    .clear {
+      clear: both;
+      /*如果清除了浮动， 父亲去自动检测孩子的高度  以最高的为准*/
+    }
+    .clearfix:after {
+       /*正常浏览器 清除浮动*/
+       /* 注意： content:"" 尽量不带点 */
+      content: '';
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    .clearfix {
+      /*zoom 1 就是ie6 清除浮动方式  *  ie7一下的版本所识别*/
+      *zoom: 1;
+    }
+
+    .clearfix_two::before,
+    .clearfix_two::after {
+      content: '';
+      /* 这句话可以出发BFC BFC可以清除浮动,BFC我们后面讲 */
+      display: table;
+    }
+
+    .clearfix_two::after {
+      clear: both;
+    }
+
+    .clearfix_two {
+      *zoom: 1;
+    }
+
+    p, h2 {
+      margin: 10px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+  <p>
+      人生就像乘坐北京地铁一号线：
+      途经国贸，羡慕繁华；
+      途经天安门，幻想权力；
+      途经金融街，梦想发财；
+      经过公主坟，遥想华丽家族；
+      经过玉泉路，依然雄心勃勃…
+      这时，有个声音飘然入耳:乘客你好,八宝山马上就要到了！
+      顿时醒悟：人生苦短，有始有终。
+      好比我们的浮动，有浮动开始，则就应该有浮动结束。
+  </p>
+  <h2>为什么要清除浮动</h2>
+  <span>
+      我们前面说过，浮动本质是用来做一些文字混排效果的，但是被我们拿来做布局用，则会有很多的问题出现， 但是，你不能说浮动不好 。
+      由于浮动元素不再占用原文档流的位置，所以它会对后面的元素排版产生影响，为了解决这些问题，此时就需要在该元素中清除浮动。
+      准确地说，并不是清除浮动，而是清除浮动后造成的影响
+      如果浮动一开始就是一个美丽的错误，那么请用正确的方法挽救它。
+  </span>
+  <h2>清除浮动本质</h2>
+  <b>清除浮动主要为了解决父级元素因为子级浮动引起内部高度为0 的问题。</b>
+  <div class="imgbox">
+    <img src="./imgs/fudong_1.png" alt="">
+    <img src="./imgs/fudong_2.png" alt="">
+    <img src="./imgs/fudong_3.png" alt="">
+  </div>
+  <h2>清除浮动的方法</h2>
+  <ul>
+    <li>1.额外标签法 是W3C推荐的做法是通过在浮动元素末尾添加一个空的标签例如 <div style=”clear:both”></div>，或则其他标签br等亦可。
+      1(优点： 通俗易懂，书写方便 缺点： 添加许多无意义的标签，结构化较差。 我只能说，w3c你推荐的方法我不接受，你不值得拥有。。。)</li>
+    <li>2.父级添加overflow属性方法(优点： 代码简洁 缺点： 内容增多时候容易造成不会自动换行导致内容被隐藏掉，无法显示需要溢出的元素。)</li>
+    <li>3.使用after伪元素清除浮动(:after 方式为空元素的升级版，好处是不用单独加标签了 优点： 符合闭合浮动思想 结构语义化正确 缺点： 由于IE6-7不支持:after，使用 zoom:1触发 hasLayout。代表网站： 百度、淘宝网、网易等)</li>
+    <li>4.使用before和after双伪元素清除浮动(优点： 代码更简洁 缺点： 由于IE6-7不支持:after，使用 zoom:1触发 hasLayout。代表网站： 小米、腾讯等)</li>
+  </ul>
+  <p>其实本质叫做闭合浮动更好一些, 记住，清除浮动就是把浮动的盒子圈到里面，让父盒子闭合出口和入口不让他们出来影响其他元素。在CSS中，clear属性用于清除浮动，其基本语法格式如下：选择器{clear:属性值;}   clear 清除  both: 同时清除左右两侧浮动的影响</p>
+  <div class="father">
+    <div class="big"></div>
+    <div class="small"></div>
+    <div class="clear"></div>
+  </div>
+  <div class="footer"></div>
+
+  <div class="father_1">
+    <div class="big"></div>
+    <div class="small"></div>
+    <div class="clear"></div>
+  </div>
+  <div class="footer"></div>
+
+  <div class="father clearfix">
+    <div class="big"></div>
+    <div class="small"></div>
+  </div>
+  <div class="footer"></div>
+
+  <div class="father clearfix_two">
+    <div class="big"></div>
+    <div class="small"></div>
+  </div>
+  <div class="footer"></div>
+  
+
+</div>
+</body>
+<script>
+  // 参考文章： https://blog.csdn.net/tichimi3375/article/details/82794074
+</script>
+</html>
