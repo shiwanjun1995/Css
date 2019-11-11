@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>版心</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      /* list-style: none; */
+    }
+    .contain {
+      width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .container {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .top, .banner, .main, .footer {
+      background-color: cyan;
+    }
+    .top, .banner, .left, .right, .footer {
+      background-color: cyan;
+    }
+    .top {
+      height: 80px;
+    }
+    .top_3 {
+      width: 100%;
+      height: 80px;
+      background-color: #09c;
+    }
+    .top_3_inner {
+      width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+      background-color: gray;
+    }
+    .banner {
+      height: 120px;
+      margin: 10px auto;
+    }
+    .banner_3 {
+      height: 120px;
+      margin: 10px auto;
+      background-color: cyan;
+    }
+    .main, .main_1 {
+      height: 300px;
+      margin: 10px auto;
+    }
+    .ad {
+      width: 1200px;
+      height: 200px;
+      background-color: darkseagreen;
+    }
+    .ad li {
+      float: left;
+      width: 285px;
+      height: 200px;
+      margin-right: 20px;
+    }
+    .ad ul :last-child {
+      margin-right: 0px;
+    }
+    .footer {
+      height: 80px;
+    }
+    .footer_3 {
+      height: 80px;
+      background-color: cyan;
+    }
+    .left {
+      float: left;
+      width: 250px;
+      height: 100%;
+    }
+    .right {
+      float: right;
+      width: 900px;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="contain">
+    <h1>1.一列固定宽度且居中</h1>
+      <img src="./imgs/banxin_1.png" alt="">
+    <h1>2.两列左窄右宽型</h1>
+      <img src="./imgs/banxin_2.png" alt="">
+    <h1>3.通栏平均分布型</h1>
+      <img src="./imgs/banxin_3.png" alt="">
+  </div>
+
+  <h2>具体的实现方式</h2>
+  <section>
+    <b>1、</b>
+    <div class="container">
+      <!-- .top+.banner+.main+.footer 快捷方式 （按下tab键直接生成代码）-->
+      <div class="top"></div>
+      <div class="banner"></div>
+      <div class="main"></div>
+      <div class="footer"></div>
+    </div>
+  </section>
+  <section>
+    <b>2、</b>
+    <div class="container">
+        <div class="top"></div>
+        <div class="banner"></div>
+        <div class="main_1">
+          <div class="left"></div>
+          <div class="right"></div>
+        </div>
+        <div class="footer"></div>
+    </div>
+  </section>
+  <section>
+    <b>3、</b>
+    <div class="container">
+      <div class="top_3">
+        <div class="top_3_inner"></div>
+      </div>
+      <div class="banner_3"></div>
+      <div class="ad">
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ul>
+      </div>
+      <div class="footer_3"></div>
+    </div>
+  </section>
+  <script>
+    // 阅读报纸时容易发现，虽然报纸中的内容很多，但是经过合理地排版，版面依然清晰、易读。同样，在制作网页时，要想使页面结构清晰、有条理，也需要对网页进行“排版”。
+    // “版心”(可视区) 是指网页中主体内容所在的区域。一般在浏览器窗口中水平居中显示，常见的宽度值为960px、980px、1000px、1200px等。
+
+    // 布局流程
+    /**
+      为了提高网页制作的效率，布局时通常需要遵守一定的布局流程，具体如下：
+      1、确定页面的版心（可视区）。
+      2、分析页面中的行模块，以及每个行模块中的列模块。
+      3、制作HTML结构 。
+      4、CSS初始化，然后开始运用盒子模型的原理，通过DIV+CSS布局来控制网页的各个模块。
+    **/
+
+    // 给每个li设置不同的颜色
+    // var lis = document.getElementsByTagName("li");
+    // var arr = Array.prototype.slice.call(lis)
+    // arr.forEach(item => {
+    //   console.log(item);
+    //   item.style.backgroundColor ="#" + Math.random().toFixed(3)*1000;
+    // })
+
+    var lis = document.getElementsByTagName("li");
+    // console.log(lis);
+   
+    for (var i = 0; i < lis.length; i++) {
+      lis[i].style.backgroundColor ="#" + Math.random().toFixed(3)*1000;
+    }
+
+  </script>
+</body>
+</html>
