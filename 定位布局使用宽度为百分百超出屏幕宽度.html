@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>fixed,absolute 布局使用width:100%超出屏幕宽度</title>
+  <style>
+    .content-box {
+      width: 290px;
+      height: 180px;
+      margin: 10px 10px 10px 0;
+      background: white;
+      box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .modify {
+      padding: 30px;
+      position: relative;
+    }
+
+    .status-right {
+      position: absolute;
+      right: 0;
+      top: 15px;
+      width: 68px;
+      height: 30px;
+      font-size: 14px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 68px 0 0 68px;
+    }
+
+    .status-bottom {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 14px;
+      width: calc(100% - 60px);
+      /* 此处设置了绝对定位 且父盒子设置了左右方向的padding:30px; 在使用width:100%;的时候 最终的实际宽度等于全屏宽度+padding值 和margin值无关*/
+      width: 100%;
+      position: absolute;
+      bottom: 30px;
+    }
+
+    .el-tag {
+      background-color: #e6a23c;
+      border-color: #e6a23c;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-box modify">
+    <h2>书写的标题</h2>
+    <p>2019年11月08日</p>
+    <span class="status-right el-tag">测评</span>
+    <span class="status-bottom">待发布</span>
+    <!-- <div class="status-bottom">
+    </div> -->
+  </div>
+  <script>
+    // 在使用fixed,absolute 布局时，如果设置了左右方向的marg,pad等，在使用width:100%，最终的实际宽度等于全屏宽度+pading值，
+    // 这一点跟流中的元素表现有所不同。
+
+    // 参考链接： https://blog.csdn.net/w18637468680/article/details/83153112
+  </script>
+</body>
+</html>
