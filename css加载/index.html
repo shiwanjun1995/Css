@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./a.css" type="text/css">
+  <style>
+    .content-box {
+      height: 200px;
+      text-align: center;
+      background-color: #09c;
+    }
+    sup {
+      color: red;
+    }
+    @import url('./b.css');
+  </style>
+</head>
+<body>
+  <input type="button" class="btn" value="按钮1">
+  <input type="button" class="btn button" value="按钮2">
+  <div class="content-box">
+    <h2>link和@important的差异</h2>
+    <p>1.老祖宗的差别。link是html提供的标签 不仅可以加载css文件 还可以定义rel等其它属性；@important属于css范畴 只能加载css样式；</p>
+    <p>2.加载顺序的差别。link引用CSS时，在页面载入时同时加载；@import需要等页面完全载入后才加载；</p>
+    <p> 3.兼容性的差别。link是XHTML标签，没有兼容问题；@import是css2.1后提出的，低版本的浏览器是不支持的；</p>
+    <p>注意：css中避免过多使用@import  如果了解了@import原理，你就会明白它的性能并不高，过多使用它会延长浏览器渲染页面的时间。 <sup>并行下载</sup></p>
+  </div>
+  <script>
+  /**
+    1.rel: 设置或返回当前文档与目标 URL之间的关系。	文档的外部样式表。
+    2.href: 属性是一个可读可写的字符串，可设置或返回当前显示的文档的完整 URL。
+    3.type: 属性可设置或者返回链接文档的类型(MIME 类型) 。MIME-types 实例： "text/css", "text/javascript", "image/gif", 等。
+  */
+  var ipt2 = document.querySelector('.button');
+  ipt2.style.width = '100px' 
+  </script>
+</body>
+</html>

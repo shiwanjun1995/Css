@@ -1,0 +1,8 @@
+.btn {
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  border-color: transparent;
+  display: block;
+  margin: 100px auto;
+}
