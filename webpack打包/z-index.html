@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Webpack打包css后z-index被重新计算的解决方法</h2>
+  <script>
+
+      // 对比开发环境和测试环境，发现打包后样式出现问题。
+      // 仔细对比发现打包后的样式z-index发生了变化。
+      // 后面定位到了
+      // optimize-css-assets-webpack-plugin
+      // 这个插件cssnano会自动重新计算z-index值，不够准确，会导致样式出错
+      // 而cssnano重新计算z-index被定义为一个不安全的属性。。。
+      // 插件设置为
+
+       new OptimizeCSSAssetsPlugin({
+        cssProcessorOptions: {
+        // 避免 cssnano 重新计算 z-index
+        safe: true
+        },
+      })
+  
+  
+  
+  </script>
+</body>
+</html>
