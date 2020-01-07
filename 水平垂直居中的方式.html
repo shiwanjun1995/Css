@@ -129,6 +129,20 @@
     align-self: center;
     justify-self: center;
   }
+
+  .parent6 {
+    width: 80%;
+    height: 300px;
+    margin: 50px;
+    border: 1px solid #f40;
+    background-color: #09c;
+    display: table;
+  }
+
+  .children6 {
+    display: table-cell;
+    vertical-align: middle;
+  }
   
 </style>
 
@@ -169,6 +183,26 @@
     <div class="children5"></div>
     <!-- <div class="children5"></div>
     <div class="children5"></div> -->
+  </div>
+
+  <h1>6.多行文本垂直居中，对父盒子设置display为table属性，模拟表格 对子元素文本外部包裹一个span标签</h1>
+  <div class="parent6">
+    <span class="children6">
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+      多行文本内容
+    </span>
   </div>
   <script>
   // 参考文章：https://www.imooc.com/article/17652、https://www.imooc.com/article/271180

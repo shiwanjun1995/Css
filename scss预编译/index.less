@@ -1,0 +1,36 @@
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+  width: 550px;
+  height: 550px;
+  margin: 0 auto;
+  background-color: #eee;
+}
+.flex-item {
+  width: 100px;
+  height: 100px;
+  background-color: #cf0;
+}
+.flex-item{
+  &:nth-child(1){
+      width:60px;
+  }
+  &:nth-child(2){
+      width:70px;
+  }
+  &:nth-child(3){
+      flex-basis:80px;
+  }
+  &:nth-child(4){
+      flex-basis:90px;
+  }
+  &:nth-child(5){
+       flex-basis:100px;
+  }
+}
+@for $i from 1 through 5 {
+  .flex-item:nth-child(#{$i}){
+      flex-shrink: $i;
+      background-color: rgba(35 * (6-$i), 20 * $i, 35 * $i,1);
+  }
+}

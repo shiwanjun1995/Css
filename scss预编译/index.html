@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./index.less"> -->
+</head>
+<body>
+  <div class="flex-container">
+    <h1>:nth-of-type(n) 选择器匹配属于父元素的特定类型的第 N 个子元素的每个元素.</h1>
+    <h1>:nth-child(n) 选择器匹配属于其父元素的第 N 个子元素，不论元素的类型。</h1>
+    <div class="flex-item">1</div>
+    <div class="flex-item">2</div>
+    <div class="flex-item">3</div>
+    <div class="flex-item">4</div>
+    <div class="flex-item">5</div>
+  </div>
+</body>
+<script>
+  "a" instanceof Object // false
+  new String('a') instanceof Object // true
+  typeof new String('a') // 'object'
+  typeof 'a' // 'string'
+  typeof function () {  } // 'function'
+  typeof new Function() // 'function'
+
+  ;(function () { 
+    return typeof arguments;
+   })();
+
+
+</script>
+</html>
