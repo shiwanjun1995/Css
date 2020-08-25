@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table-cell的运用</title>
+    <style>
+        .login-box {
+            width: 500px;
+            height: 600px;
+            margin: 0 auto;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            background-color: skyblue;
+        }
+        .box-item {
+            width: 100%;
+            display: table; /*让父级元素成为一个块级表格元素*/
+        }
+        .item-ipt,.item-btn {
+            padding: 0 15px;
+            display: table-cell; /*子元素设置成表格单元格 让它们假装自己就在表格里面一样*/
+            vertical-align: middle; /*并让它们垂直居中*/
+            border: 1px solid #eee;
+        }
+        .item-ipt {
+            width: 100%;
+            height: 32px;
+            box-sizing: border-box; /*怪异盒模型 border-box 宽度就是 width*/
+        }
+        .item-ipt:focus {
+            outline: none;
+            border-color: darkcyan;
+        }
+        .item-btn {
+            width: 1px;
+            cursor: pointer;
+            white-space: nowrap; /*强制文本不换行*/
+            background-color: #efefef;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <div class="box-item">
+            <input class="item-ipt" type="text" placeholder="验证码">
+            <div class="item-btn">获取验证码</div>
+        </div>
+    </div>
+</body>
+</html>
