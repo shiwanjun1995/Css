@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>laoding</title>
+    <style>
+        .loading {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            background: conic-gradient(deepskyblue, 30%, white);
+            --mask: radial-gradient(closest-side, transparent 75%, black 76%);
+            -webkit-mask-image: var(--mask);
+            mask-image: var(--mask);
+            animation: spin 1s linear infinite reverse;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .love {
+            color: red;
+            display: inline-block;
+            position: relative;
+            top: .2em;
+            font-size: 1.4em;
+            -webkit-transform: scale(.9);
+            -moz-transform: scale(.9);
+            transform: scale(.9);
+            -webkit-animation: love .5s infinite linear alternate-reverse;
+            -moz-animation: love .5s infinite linear alternate-reverse;
+            animation: love .5s infinite linear alternate-reverse
+        }
+        @-webkit-keyframes love {
+            to {
+                -webkit-transform: scale(1.2)
+            }
+        }
+        @-moz-keyframes love {
+            to {
+                -moz-transform: scale(1.2)
+            }
+        }
+        @keyframes love {
+            to {
+                transform: scale(1.2)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading"></div>
+    <span class="love">❤</span>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex最后一行左对齐的方式</title>
+    <style>
+        body {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .list {
+            width: 24%; height: 100px;
+            background-color: skyblue;
+            margin-top: 15px;
+        }
+        /* 使用计算过后的 margin 值 */
+        .container-1 {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .list-1 {
+            width: 24%; height: 100px;
+            background-color: skyblue;
+            margin-top: 15px;
+        }
+        .list-1:not(:nth-child(4n)) {
+            margin-right: calc((100% - 24% * 4) / 3);
+        }
+        .container-2 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .list-2-1 {
+            height: 100px;
+            background-color: skyblue;
+            margin: 0 10px 10px 0;
+        }
+        /* 最后一项margin-right:auto */
+        .container-2 .list-2-1:last-child {
+            margin-right: auto;
+        }
+        .list-2-2 {
+            height: 100px;
+            background-color: skyblue;
+            margin: 0 10px 10px 0;
+        }
+        /* 使用伪元素辅助左对齐 */
+        .container-2::after {
+            content: '';
+            flex: auto; /* 或者flex: 1 */
+        }
+        /* 使用 grid 布局 */
+        .container-3 {
+            display: grid;
+            justify-content: space-between;
+            /* 如果希望每一行（或每一列）容纳尽可能多的单元格，这时可以使用auto-fill关键字表示自动填充。 */
+            /* 表示每列宽度100px，然后自动填充，直到容器不能放置更多的列 */
+            /* 属性定义每一列的列宽 */
+            grid-template-columns: repeat(auto-fill, 24%);
+            /* grid-gap: 1%; */
+        }
+        .list-3 {
+            width: auto; height: 100px;
+            background-color: skyblue;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>justify-content对齐问题描述</h1>
+    <p>justify-content属性控制了水平轴上项目的对齐方式 但是如果最后一行列表的个数不满 就会出现最后一行没有完全垂直对齐问题</p>
+    <div class="container">
+        <div class="list"></div>
+        <div class="list"></div>
+        <div class="list"></div>
+        <div class="list"></div>
+        <div class="list"></div>
+        <div class="list"></div>
+        <div class="list"></div>
+    </div>
+
+    <h2>1.如果每行列数是固定的(例如4个)</h2>
+    <p>不使用flex的两端对齐效果 中间的gap间隙使用margin自己控制</p>
+    <div class="container-1">
+        <div class="list-1"></div>
+        <div class="list-1"></div>
+        <div class="list-1"></div>
+        <div class="list-1"></div>
+        <div class="list-1"></div>
+        <div class="list-1"></div>
+        <div class="list-1"></div>
+    </div>
+
+    <h2>2.如果每一子项的宽度是不固定</h2>
+    <p>由于此时间隙的大小是不固定 对齐不严格 因此我们可以直接让最后一行左对齐即可 有两种方案</p>
+    <p style="color: red;">2.1.最后一项margin-right:auto;</p>
+    <div class="container-2">
+        <div class="list-2-1" style="width: 100px;"></div>
+        <div class="list-2-1" style="width: 150px;"></div>
+        <div class="list-2-1" style="width: 80px;"></div>
+        <div class="list-2-1" style="width: 180px;"></div>
+        <div class="list-2-1" style="width: 300px;"></div>
+        <div class="list-2-1" style="width: 210px;"></div>
+        <div class="list-2-1" style="width: 200px;"></div>
+    </div>
+
+    <p style="color: red;">2.2.父元素创建伪元素并设置flex:auto;或者flex:1;</p>
+    <div class="container-2">
+        <div class="list-2-2" style="width: 100px;"></div>
+        <div class="list-2-2" style="width: 150px;"></div>
+        <div class="list-2-2" style="width: 80px;"></div>
+        <div class="list-2-2" style="width: 180px;"></div>
+        <div class="list-2-2" style="width: 300px;"></div>
+        <div class="list-2-2" style="width: 210px;"></div>
+        <div class="list-2-2" style="width: 200px;"></div>
+    </div>
+
+    <h2>2.如果列数不固定 同时布局的列表个数又不固定 可以利用grid布局</h2>
+    <p>grid布局天然就有gap间隙 且天然有格子排列对齐 最后一行实现左对齐是最合适的方法</p>
+    <div class="container-3">
+        <div class="list-3"></div>
+        <div class="list-3"></div>
+        <div class="list-3"></div>
+        <div class="list-3"></div>
+        <div class="list-3"></div>
+        <div class="list-3"></div>
+        <div class="list-3"></div>
+    </div>
+</body>
+</html>
