@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>主界面</title>
+	<meta name="renderer" content="webkit">
+	<!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核 -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="http://fbs.sungrowpower.com/sungrowh5/images/favicon.ico" type="image/x-icon">
+	<!--调试阶段禁止缓存,例如微信，QQ浏览器缓存-->
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+	<!-- 禁止百度转码 -->
+	<meta http-equiv="Cache-Control" content="no-siteapp">
+	<!-- windows phone 点击无高光 -->
+	<meta name="msapplication-tap-highlight" content="no">
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+		}
+		body {
+			font-family: "微软雅黑";
+			font-size: 14px;
+		}
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.page_list {
+			width: 100%;
+		}
+
+		h3 {
+			border-bottom: 1px solid #eee;
+			margin: 10px auto;
+			padding: 10px 0;
+			display: table;
+		}
+
+		ol,
+		li {
+			margin: 0;
+			padding: 0;
+		}
+
+		ol li {
+			list-style: none;
+			font-family: "微软雅黑";
+			font-size: 14px;
+			padding: 0 5px;
+			border-bottom: 1px dotted #eee;
+			text-align: center;
+		}
+
+		ol li a {
+			background-image: url("data:image/png;base64,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");
+			background-repeat: no-repeat;
+		}
+
+		ol li:hover {
+			background: skyblue;
+		}
+
+		ol li a {
+			display: block;
+			line-height: 30px;
+			color: #000;
+			text-decoration: none;
+			font-family: "微软雅黑";
+			font-size: 12px;
+			padding: 0 20px;
+		}
+
+		ol li a:hover {
+			color: #fff !important;
+		}
+
+		ol li.folder a {
+			background-position: -5px 0;
+		}
+
+		ol li.page a {
+			background-position: -5px -43px;
+		}
+
+		ol li.page2 {
+			padding-left: 2em;
+		}
+
+		ol li.page2 a {
+			background-position: -5px -43px;
+		}
+
+		ol li.page3 {
+			padding-left: 4em;
+		}
+
+		ol li.page3 a {
+			background-position: -5px -43px;
+		}
+
+		ol li.going a {
+			background-position: -5px -86px;
+			color: #aaa;
+		}
+
+		ol li.mobile a {
+			background-position: -5px -129px;
+		}
+
+		ol li.new a {
+			background-position: -5px -172px;
+		}
+
+		@media (max-width: 640px) {
+			.page_list {
+				width: 100%;
+			}
+
+			ol li a {
+				width: 90%;
+			}
+
+			#qrcode {
+				display: none;
+			}
+		}
+
+		.page_list1 {
+			width: 100%;
+		}
+
+		.page_list1 {
+			width: 100%;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		table td {
+			border: 1px solid #aaa;
+			border-collapse: collapse;
+		}
+	</style>
+
+</head>
+
+<body>
+	<table width="100%" border="0" cellspacing="0" cellpadding="20">
+		<tr>
+			<td valign="top">
+				<div class="page_list1">
+					<h3>导航页</h3>
+					<ol>
+						<li class="page"><a href="1.版心布局.html">1.版心布局</a></li>
+						<li class="page"><a href="2.背景书写顺序.html">2.背景书写顺序</a></li>
+						<li class="page"><a href="3.登录页面UI的极简实现.html">3.登录页面UI的极简实现</a></li>
+						<li class="page"><a href="4.点击高亮模拟.html">4.点击高亮模拟</a></li>
+						<li class="page"><a href="5.点击开启或关闭.html">5.点击开启或关闭</a></li>
+						<li class="page"><a href="6.定位布局使用宽度为百分百超出屏幕宽度.html">6.定位布局使用宽度为百分百超出屏幕宽度</a></li>
+						<li class="page"><a href="7.清除浮动.html">7.清除浮动</a></li>
+						<li class="page"><a href="8.认识HTML5.html">8.认识HTML5</a></li>
+						<li class="page"><a href="9.石老师的flex布局教程(实例篇).html">9.石老师的flex布局教程(实例篇)</a></li>
+						<li class="page"><a href="10.石老师的flex布局教程(语法篇).html">10.石老师的flex布局教程(语法篇)</a></li>
+						<li class="page"><a href="11.水平垂直居中的方式.html">11.水平垂直居中的方式</a></li>
+						<li class="page"><a href="12.BFC详解.html">12.BFC详解</a></li>
+						<li class="page"><a href="13.CSS3详解.html">13.CSS3详解</a></li>
+						<li class="page"><a href="14.flex布局最后一行列表左对齐的方式.html">14.flex布局最后一行列表左对齐的方式</a></li>
+						<li class="page"><a href="15.flex特殊值.html">16.flex特殊值</a></li>
+						<li class="page"><a href="16.loading效果.html">17.loading效果</a></li>
+					</ol> 
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>
