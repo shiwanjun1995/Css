@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>多种布局</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body {
+    width: 1080px;
+    margin: 0 auto;
+    height: 100%;
+    background-color: skyblue;
+  }
+
+  h1 {
+    font-size: 16px;
+    margin: 10px auto;
+  }
+
+  .parent1-1 {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #f40;
+    background: #09c;
+    position: relative;
+  }
+
+  .children1-1 {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    border: 1px dashed #000;
+    margin: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .parent1-2 {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #f40;
+    background: #09c;
+    position: relative;
+  }
+
+  .children1-2 {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    border: 1px dashed #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  .parent1-3 {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #f40;
+    background: #09c;
+    display: grid;
+  }
+
+  .children1-3 {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    /* border: 1px dashed #000;
+    justify-self: center;
+    align-self: center; */
+    /* 上面两个简称的缩写 */
+    place-self: center;
+  }
+
+  .parent2-1 {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #f40;
+    background: #09c;
+    display: flex;
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    /* flex-direction:column; */
+    /* 一列显示 */
+  }
+
+  .children2-1 {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    border: 1px dashed #000;
+    /*如果children下面还有子元素的话，可以嵌套使用*/
+    /* display: flex;
+    justify-content: center;
+    align-items:center;  */
+    margin: 5px;
+  }
+  
+  .parent2-2 {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #f40;
+    background: #09c;
+    display: flex;
+  }
+
+  .children2-2 {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    border: 1px dashed #000;
+    margin: auto;
+  }
+
+  .parent2-3 {
+    /* width: 100%; */
+    width: 1082px;
+    height: 300px;
+    border: 1px solid #f40;
+    background: #09c;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    /* 去除意外的间隙 */
+    font-size: 0;
+  }
+
+  .children2-3 {
+    width: 100px;
+    height: 100px;
+    background-color: #eee;
+    border: 1px dashed #000;
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .parent6 {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #f40;
+    background-color: #09c;
+    display: table;
+  }
+
+  .children6 {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+</style>
+
+<body>
+  <h1>第一部分：单个子元素</h1>
+  <hr />
+
+  <section>
+    <p>1.父相子绝 + transform</p>
+    <div class="parent1-1">
+      <div class="children1-1"></div>
+      <!-- <div class="children1-1"></div>
+      <div class="children1-1"></div>
+      <div class="children1-1"></div> -->
+    </div>
+  </section>
+
+  <section>
+    <p>2.父元素设置相对定位，子元素设置绝对定位，四个方向设置为0，margin值设置auto</p>
+    <div class="parent1-2">
+      <div class="children1-2"></div>
+      <!-- <div class="children1-2"></div>
+      <div class="children1-2"></div>
+      <div class="children1-2"></div> -->
+    </div>
+  </section>
+
+  <section>
+    <p>3.父元素设置 display:grid，子元素设置 place-self:center</p>
+    <div class="parent1-3">
+      <div class="children1-3"></div>
+      <!-- <div class="children1-3"></div>
+      <div class="children1-3"></div>
+      <div class="children1-3"></div> -->
+    </div>
+  </section>
+
+  <h1>第二部分：多个子元素(单个子元素或者多个子元素都行)</h1>
+  <hr />
+  
+  <section>
+    <p>1.父元素直接设置 display:flex 和 justify-content:center、align-items:center</p>
+    <div class="parent2-1">
+      <div class="children2-1"></div>
+      <div class="children2-1"></div>
+      <div class="children2-1"></div>
+      <div class="children2-1"></div>
+    </div>
+  </section>
+
+  <section>
+    <p>2.父元素 display:flex，子元素 margin auto</p> 
+    <div class="parent2-2">
+      <div class="children2-2"></div>
+      <div class="children2-2"></div>
+      <div class="children2-2"></div>
+      <div class="children2-2"></div>
+    </div>
+  </section>
+
+  <section>
+    <p>3.父元素组合使用 display:table-cell 和 vertical-align、text-align，子元素display:inline-block 使所有行内元素水平垂直居中</p>
+    <div class="parent2-3">
+      <div class="children2-3"></div>
+      <div class="children2-3"></div>
+      <div class="children2-3"></div>
+      <div class="children2-3"></div>
+    </div>
+  </section>
+
+  <section>
+    <p>6.多行文本垂直居中，对父元素设置display为table属性，模拟表格 对子元素设置display:table-cell、vertical-align:middle</p>
+    <div class="parent6">
+      <div class="children6">
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+        多行文本内容
+      </div>
+    </div>
+  </section>
+  <script>
+  // 参考文章：https://www.imooc.com/article/17652、https://www.imooc.com/article/271180
+  </script>
+</body>
+
+</html>
