@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圆环</title>
+  <style>
+    .element1 {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #bfbfbf;
+    }
+    .element1::after {
+      content: '';
+      display: inline-block;
+      /* 宽高为父元素的一半 */
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #5b5b5b99;
+      /* 相对于自身定位 且定位的距离也是自身宽高的一半 */
+      position: relative;
+      left: 25px;
+      top: 25px;
+    }
+
+    .element2 {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 25px solid #bfbfbf;
+      background-color: #5b5b5b99;
+    }
+
+    .element3 {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #5b5b5b99;
+      box-shadow: 0 0 0 25px #bfbfbf;
+    }
+
+    .element4 {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: radial-gradient(closest-side, #5b5b5b99 50%, #bfbfbf 50%);
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h1>1.使用伪元素，before／after</h1>
+    <div class="element1"></div>
+  </section>
+
+  <section>
+    <h1>2.使用border</h1>
+    <div class="element2"></div>
+  </section>
+
+  <section>
+    <h1>3.使用box-shadow（不会改变框架原有样式）</h1>
+    <div class="element3"></div>
+  </section>
+
+  <section>
+    <h1>4.使用radial-gradient</h1>
+    <div class="element4"></div>
+  </section>
+</body>
+</html>
