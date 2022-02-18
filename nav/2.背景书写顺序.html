@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
         }
-        html, body, .bg, .bgm {
+        html, body, .bg, .bgm, .bgml {
             height: 100%;
         }
         .bg {
@@ -29,13 +29,14 @@
         }
         /* 同时设置背景图和渐变色，渐变色必须放置在后面才会生效，并且中间用，隔开 */
         .bgml {
-            background: url(https://www.w3school.com.cn/i/eg_bg_04.gif), linear-gradient(45deg, black, transparent);
+            background: url(https://www.w3school.com.cn/i/eg_bg_04.gif) no-repeat center, linear-gradient(45deg, black, transparent);
         }
     </style>
 </head>
 <body>
-    <div class="bg"></div>
+    <!-- <div class="bg"></div> -->
     <!-- <div class="bgm"></div> -->
+    <div class="bgml"></div>
     <script>
         // 复合属性的方法 书写格式
         // background : background-color background-image background-repeat background-attachment background-position;
