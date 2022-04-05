@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>盒子模型</title>
+  <style>
+    .box-1 {
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 10px;
+      /* 标准盒子模型： */
+      box-sizing: content-box;
+    }
+    .box-2 {
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 10px;
+      /* 怪异盒子模型（IE盒子模型） */
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h1>宽度为：width(内容宽度) + padding(内边距) + border(边框)</h1>
+  <div class="box-1">
+    Hello, world!
+  </div>
+  <h1>宽度为：width(内容宽度)</h1>
+  <div class="box-2">
+    Hello, world!
+  </div>
+</body>
+</html>
