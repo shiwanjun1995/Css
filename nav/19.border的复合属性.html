@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>border的复合属性</title>
+  <style>
+    .border-simple {
+      width: 200px;
+      height: 100px;
+      background-color: #f40;
+      border: 1px solid #e6e6e6;
+      border-top: 0;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+    .mt-20 {
+      margin-top: 20px;
+    }
+    .border-direction {
+      width: 200px;
+      height: 100px;
+      /* border: 1px solid #ccc; */
+      /* border-top-color: rgb(204, 204, 204);
+      border-top-style: solid;
+      border-top-width: 1px;
+      border-right-color: rgb(204, 204, 204);
+      border-right-style: solid;
+      border-right-width: 1px;
+      border-bottom-color: rgb(204, 204, 204);
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-left-color: rgb(204, 204, 204);
+      border-left-style: solid;
+      border-left-width: 1px;
+      border-image-source: initial;
+      border-image-slice: initial;
+      border-image-width: initial;
+      border-image-outset: initial;
+      border-image-repeat: initial; */
+      background-color: #f40;
+      border-left: 1px solid #e6e6e6;
+      border-right: 1px solid #e6e6e6;
+      border-bottom: 1px solid #e6e6e6;
+      /* width, style, color */
+      border-radius: 0 0 4px 4px;
+      /* 顺时针 */
+      /* 该属性是一个 简写属性，是为了将这四个属性 border-top-left-radius、border-top-right-radius、border-bottom-right-radius，和 border-bottom-left-radius 简写为一个属性。 */
+    }
+  </style>
+</head>
+<body>
+  <h1>两者之间的区别就是第一个会添加一个顶部的border，解决办法是设置其值为0</h1>
+  <div class="border-simple">
+    some content.some content.some content.
+  </div>
+
+  <div class="border-direction mt-20">
+    some content.some content.some content.
+  </div>
+</body>
+</html>
