@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文本换行总结</title>
+  <style>
+    .narrow {
+      padding: 10px;
+      border: 1px solid;
+      width: 500px;
+      margin: 0 auto;
+      font-size: 20px;
+      line-height: 1.5;
+      letter-spacing: 1px;
+    }
+    .normal {
+      word-break: normal;
+      /* 使用默认的断行规则。 */
+    }
+    .breakAll {
+      word-break: break-all;
+      /* 对于 non-CJK (CJK 指中文/日文/韩文) 文本，可在任意字符间断行。 */
+      /* 只要容器装不下了，不管是cjk内容还是非cjk内容就会立即换行，也可以理解为 break-all 将非cjk内容作为cjk处理 */
+    }
+    .keepAll {
+      word-break: keep-all;
+      /* CJK 文本不断行。Non-CJK 文本表现同 normal。 */
+      /* keep-all属性恰好和break-all相反，将CJK内容当成非CJK内容处理 */
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h1>word-break: 指定了怎样在单词内断行</h1>
+    <p>1. <code>word-break: normal</code></p>
+    <p class="normal narrow">This is a long and
+      Honorificabilitudinitatibus califragilisticexpialidocious Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu
+      グレートブリテンおよび北アイルランド連合王国という言葉は本当に長い言葉
+    </p>
+
+    <p>2. <code>word-break: break-all</code></p>
+    <p class="breakAll narrow">This is a long and
+      Honorificabilitudinitatibus califragilisticexpialidocious Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu
+      グレートブリテンおよび北アイルランド連合王国という言葉は本当に長い言葉
+    </p>
+
+    <p>3. <code>word-break: keep-all</code></p>
+    <p class="keepAll narrow">This is a long and
+      Honorificabilitudinitatibus califragilisticexpialidocious Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu
+      グレートブリテンおよび北アイルランド連合王国という言葉は本当に長い言葉
+    </p>
+  </section>
+
+  <script>
+    // 参考链接：1.https://segmentfault.com/a/1190000017016392
+  </script>
+</body>
+</html>
