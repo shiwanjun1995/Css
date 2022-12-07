@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>流、元素与基本尺寸</title>
+  <style>
+    .bx input {
+      /* 这样写不能完全自适应父容器，因为还有 padding、border */
+      width: 100%;
+    }
+
+    .mt-100 {
+      margin-top: 100px;
+    }
+
+    .bx textarea {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <!-- 替换元素：尺寸由内部元素决定，且无论其 display 值为 inline、block -->
+  <!-- 常见的替换元素有：input、textarea -->
+  <div class="bx">
+    <input type="text" >
+  </div>
+
+  <div class="bx mt-100">
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+  </div>
+
+  <!-- 非替换元素：如果其 display 值为 block，则会具有流动性，宽度由外部尺寸决定 -->
+
+  <!-- 在我看来，box-sizing 被发明出来最大的初衷应该是解决替换元素宽度自适应问题。如
+  果真的如我所言，那*{box-sizing:border-box}是不是没用在点儿上呢？是不是应该像下
+  面这样 CSS 重置才更合理呢？
+  input, textarea, img, video, object { 
+    box-sizing: border-box; 
+  } -->
+</body>
+</html>

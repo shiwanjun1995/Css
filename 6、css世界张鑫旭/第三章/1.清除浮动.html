@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>流、元素与基本尺寸</title>
+    <style>
+      .box {
+        padding: 10px;
+        background-color: #cd0000;
+      }
+      .box > img {
+        float: left;
+      }
+      .clear::after {
+        content: '';
+        display: table; /* 也可以是 block，或者是 list-item */
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box clear">
+      <img src="https://demo.cssworld.cn/images/common/l/1.jpg" alt="" />
+    </div>
+    <script>
+      /*
+      “块级元素”对应的英文是 block-level element，常见的块级元素有<div>、<li>和<table>
+      等。需要注意是，“块级元素”和“display 为 block 的元素”不是一个概念。例如，<li>元
+      素默认的 display 值是 list-item，<table>元素默认的 display 值是 table，但是它们
+      均是“块级元素”，因为它们都符合块级元素的基本特征，也就是一个水平流上只能单独显示一
+      个元素，多个块级元素则换行显示。
+      正是由于“块级元素”具有换行特性，因此理论上它都可以配合 clear 属性来清除浮动
+      带来的影响。
+      */
+    </script>
+  </body>
+</html>
