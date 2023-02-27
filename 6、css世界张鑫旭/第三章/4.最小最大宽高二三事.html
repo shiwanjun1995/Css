@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>任意高度元素的展开收起动画技术</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    /* .element {
+      height: 0;
+      overflow: hidden;
+      transition: 0.25s;
+    }
+
+    .element:hover {
+      height: auto;
+    } */
+    /* 这样是没有动画效果的 */
+
+    .up {
+      display: none;
+    }
+
+    .element {
+      /* 因为默认值是 none */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s;
+    }
+    .element.active {
+      /* 设置一个足够高的高度，
+      因为max-height 值比 height 计算值大的时候，元素的高度就是 height 属性的计算高度 
+      在本交互中，也就是 height:auto 时候的高度值
+      */
+      max-height: 666px;
+      /**
+      但是，使用此方法也有一点要注意，即虽然说从适用范围讲，max- height 值越大使用场景越多，但是，如果 max-height 值太大，在收起的时候可能会有“效果延迟”的问题
+      因此，我个人建议 max-height 使用足够安全的最小值，这样，收起时即使有延迟，也因为时间很短，很难被用户察觉，并不会影响体验。
+      */
+    }
+
+  </style>
+</head>
+<body>
+  <span class="down">更多↓</span>
+  <span class="up">收起↑</span>
+  <div class="element">
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+  </div>
+  <script>
+    // CSS 世界中，min-width/max-width 出现的场景一定是自适应布局或者流体布局中
+
+    /**
+     * CSS 世界中，min-width/max-width 和 min-height/max-height 属性间，以及与width 和 height 之间有一套相互覆盖的规则。
+     * 1、超越!important【指的是 max-width 会覆盖 width，就算width加了“泰坦尼克” !important，也会直接被 max-width 一个浪头就拍沉】
+     * 2、超越最大【指的是min-width覆盖max-width，此规则发生在min-width和max-width冲突的时候。】
+     */
+   
+    var downBtn = document.querySelector('.down')
+    var upBtn = document.querySelector('.up')
+    var ele = document.querySelector('.element')
+
+    // 函数作为对象的属性，指向的是调用该函数的对象
+    downBtn.addEventListener('click', function() {
+      this.style.display = 'none'
+      upBtn.style.display = 'block'
+      console.log(ele.classList);
+
+      ele.classList.toggle('active')
+    })
+
+    upBtn.addEventListener('click', function() {
+      this.style.display = 'none'
+      downBtn.style.display = 'block'
+
+      ele.classList.toggle('active')
+
+    })
+
+
+
+  </script>
+</body>
+</html>
